@@ -54,6 +54,7 @@ setup(
     packages=find_packages(exclude=["docs", "tests"]),
     entry_points={
         "console_scripts": [
+            "rsoxs_gui = rsoxs_gui.main:main"
             # 'command = some.module:some_function',
         ],
     },
