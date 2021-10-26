@@ -34,11 +34,7 @@ with open(path.join(here, "README.rst"), encoding="utf-8") as readme_file:
 
 with open(path.join(here, "requirements.txt")) as requirements_file:
     # Parse requirements.txt, ignoring any commented-out lines.
-    requirements = [
-        line
-        for line in requirements_file.read().splitlines()
-        if not line.startswith("#")
-    ]
+    requirements = [line for line in requirements_file.read().splitlines() if not line.startswith("#")]
 
 
 setup(
@@ -54,6 +50,7 @@ setup(
     packages=find_packages(exclude=["docs", "tests"]),
     entry_points={
         "console_scripts": [
+            "rsoxs-gui = rsoxs_gui.main:main"
             # 'command = some.module:some_function',
         ],
     },
