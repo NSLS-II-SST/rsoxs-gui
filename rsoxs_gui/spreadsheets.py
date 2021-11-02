@@ -13,6 +13,7 @@ catalog_name = "rsoxs"
 try:
     db0 = Broker.named(catalog_name)
 except Exception as ex:
+    db0 = None
     print(f"Databroker catalog '{catalog_name}' can not be accessed: {ex}")
 
 
