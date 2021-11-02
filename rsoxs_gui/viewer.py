@@ -48,6 +48,30 @@ class Viewer(ViewerModel):
         widget = QtViewer(self)
         self._window = Window(widget, show=show)
 
+        # Customize Run Engine model for BMM:
+        #   - name of the module that contains custom code modules
+        #     (conversion of spreadsheets to sequences of plans)
+        self.run_engine.qserver_custom_module_name = "rsoxs-gui.spreadsheets"
+        self.run_engine.plan_spreadsheet_additional_parameters = {
+            "sort_by": {
+                "text": "Sort by",
+                "values": (
+                    "sample_num",
+                    "spriority",
+                    "apriority",
+                    "sample_id",
+                    "project",
+                    "config",
+                    "proposal",
+                    "plan",
+                    "plan_args",
+                ),
+                "type": str,
+            },
+            "rev": {"text": "Sort in reverse order", "values": (False, True), "type": bool},
+            "retract_when_done": {"text": "Retract when done", "values": (False, True), "type": bool},
+        }
+
     @property
     def window(self):
         return self._window
